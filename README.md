@@ -63,11 +63,19 @@ Run the program and enjoy :)
 
 # TODO List
 
+<!-- TODO List -->
+
 <h3>In the near future:</h3>
-- Option to send messages to many channels at once,
-- Option to spam dms,
-- Option to send images,
+<ul>
+  <li>Option to send messages to many channels at once</li>
+  <li>Option to spam dms</li>
+  <li>Option to send images</li>
+</ul>
+
 <h3>Late future plans:</h3>
-- Auto token grabbing, so the user doesnt have to check for it for themselves,
-- List of servers and channels generated for the users account, so they can move easily between channels to spam,
-- Bot mod bypassing
+<ul>
+  <li>Auto token grabbing, so the user doesn't have to check for it for themselves</li>
+  <li>List of servers and channels generated for the user's account, so they can move easily between channels to spam</li>
+  <li>Bot mod bypassing</li>
+</ul>
+
