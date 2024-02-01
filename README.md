@@ -15,7 +15,7 @@ A simple discord selfbot written in python.<br><br>
 
 ## Warning
 
-I don't take any responsibility for using this program. It was made only for educational purposes and shouldnt be used in any malicious way. Using this on a user account is prohibited by the [Discord TOS](https://discord.com/terms) and can lead to getting your account banned.
+I don't take any responsibility for using this program. It was made only for educational purposes and shouldnt be used in any malicious way. Using this on a user account is prohibited by the [Discord TOS](https://discord.com/terms) and can lead to getting your account banned. Use at your own risk.
 
 ## About
 
@@ -60,3 +60,14 @@ token = "" #HERE GOES YOUR USER TOKEN
 <h3>Step 4</h3>
 
 Run the program and enjoy :)
+
+# TODO List
+
+<h3>In the near future:</h3>
+- Option to send messages to many channels at once,
+- Option to spam dms,
+- Option to send images,
+<h3>Late future plans:</h3>
+- Auto token grabbing, so the user doesnt have to check for it for themselves,
+- List of servers and channels generated for the users account, so they can move easily between channels to spam,
+- Bot mod bypassing
