@@ -71,7 +71,7 @@ def main():
                     image_path = os.path.join(image_folder_path, random.choice(images))
                     send_files_in_parallel(token, user_channels, image_path)
 
-            # time.sleep(1) <-- uncomment to change the time between sending each message
+            # time.sleep(1) <-- uncomment to change the time between sending each message, ex: time.sleep(5)
 
         print(f"{repeat_count} messages/images sent to {len(user_channels)} channels. Wait 5 seconds before resending.")
         time.sleep(5)
