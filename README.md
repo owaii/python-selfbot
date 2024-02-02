@@ -2,9 +2,7 @@
 # Discord python selfbot
 
 A simple discord selfbot written in python.<br><br>
-[![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)  
-![GitHub All Releases](https://img.shields.io/github/downloads/owaii/python-selfbot/total.svg)
-
+[![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE) 
 
 
 ## Table of Contents
@@ -25,7 +23,9 @@ This selfbot was made in python using a requests library that you have to instal
 
 - Customizable message delay
 - Choosing the words that will be spammed
-- Randomizing words to send from the list
+- Randomizing words and images to send from the list
+- Sending messages/images to multiple channels/dms at once
+- Easy to use
 - more features are going to be added in the future
 
 ## Installation process
@@ -35,7 +35,7 @@ Instructions on setting up your project locally. Include prerequisites, installa
 <h3>Step 1.</h3>
 
 You will need to have the newest [python](https://www.python.org/downloads/) installed.
-I will include a file to check for python availability on your system.
+I will include a [file](https://github.com/owaii/python-selfbot/blob/selfbot/src/resources/dependenciesCheck.bat) to check for python and request library availability on your system.
 
 <h3>Step 2.</h3>
 
@@ -49,13 +49,24 @@ pip install requests
 
 If you succesfuly completed these steps, its time to look into the code. Open the selfbot.py and replace those lines with valid values:
 ```bash
-url = "" #HERE GOES YOUR REQUEST URL
+# Add your user token and channels directly in the code
+token = "YOUR_USER_TOKEN"
+
+user_channels = [
+"https://discord.com/api/v9/channels/YOUR_CHANNEL_ID_1/messages",
+"https://discord.com/api/v9/channels/YOUR_CHANNEL_ID_2/messages"
+# Add more channel URLs as needed
+
 [...]
-token = "" #HERE GOES YOUR USER TOKEN
+
+image_folder_path = "resources/images"  # Replace with your folder path
+
 ```
 - To get your request url, you need to go to the channel that you are trying to flood and open developer tools. Send a random message and look as there is a new request called "messages". Click on it and search for "Request URL". Copy the link and paste it inside the quotes.
 
 - To get your token, you simply need to do the same as before but search for "Authorization". There will be your token.  Copy it and paste it inside the quotes
+
+- To get your image file path just copy the file path of the folder images and copy it in there. It should look similar to this (depends where you store the file): C:\Users\username\Downloads\python-selfbot\src\resources\images
 
 <h3>Step 4</h3>
 
@@ -67,15 +78,13 @@ Run the program and enjoy :)
 
 <h3>In the near future:</h3>
 <ul>
-  <li>Option to send messages to many channels at once</li>
-  <li>Option to spam dms</li>
-  <li>Option to send images</li>
+  <li>Auto token grabbing, so the user doesn't have to check for it for themselves</li>
+  <li>List of servers and channels generated for the user's account, so they can move easily between channels to spam</li>
 </ul>
 
 <h3>Late future plans:</h3>
 <ul>
-  <li>Auto token grabbing, so the user doesn't have to check for it for themselves</li>
-  <li>List of servers and channels generated for the user's account, so they can move easily between channels to spam</li>
   <li>Bot mod bypassing</li>
+  <li>Overall better performance and optimalization</li>
 </ul>
 
