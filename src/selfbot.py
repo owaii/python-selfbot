@@ -55,7 +55,7 @@ def main():
     ]
 
     repeat_count = 30
-    image_folder_path = "resources/images"  # Replace with your folder path
+    image_folder_path = r"resources/images"  # Replace with your folder path
 
     print("Add your own messages. Press Enter twice to finish adding.")
     user_messages = get_user_messages()
