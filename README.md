@@ -59,7 +59,7 @@ user_channels = [
 
 [...]
 
-image_folder_path = "resources/images"  # Replace with your folder path
+image_folder_path = r"resources/images"  # Replace with your folder path
 
 ```
 - To get your request url, you need to go to the channel that you are trying to flood and open developer tools. Send a random message and look as there is a new request called "messages". Click on it and search for "Request URL". Copy the link and paste it inside the quotes.
