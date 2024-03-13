@@ -4,6 +4,8 @@ import random
 import os
 from concurrent.futures import ThreadPoolExecutor
 
+repeat_count = 0 # Don't change!
+
 def send_file(token, channel_url, file_path):
     url = channel_url
     files = {"file": open(file_path, "rb")}
@@ -19,66 +21,73 @@ def send_message(token, channel_url, message):
 def get_files_in_folder(folder_path):
     return [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
 
-def get_user_messages():
-    messages = []
+def get_user_input(prompt, exit_condition):
+    user_input_list = []
     while True:
-        user_input = input("Enter your message (or press Enter twice to finish adding your message): ")
+        user_input = input(prompt)
         if not user_input:
             break
-        messages.append(user_input)
-    return messages
+        user_input_list.append(user_input)
+    return user_input_list
 
-def get_user_channels():
-    channels = []
-    while True:
-        user_input = input("Enter channel URL (or press Enter twice to finish adding channels): ")
-        if not user_input:
-            break
-        channels.append(user_input)
-    return channels
-
-def send_messages_in_parallel(token, user_channels, message):
+def send_messages_in_parallel(token, user_channels, content_list, is_file=False, folder_path=None):
+    global repeat_count
     with ThreadPoolExecutor() as executor:
-        executor.map(lambda channel: send_message(token, channel, message), user_channels)
-
-def send_files_in_parallel(token, user_channels, image_path):
-    with ThreadPoolExecutor() as executor:
-        executor.map(lambda channel: send_file(token, channel, image_path), user_channels)
+        for i in range(repeat_count):
+            if is_file:
+                files = get_files_in_folder(folder_path)
+                if files:
+                    file_path = os.path.join(folder_path, random.choice(files))
+                    executor.submit(send_file, token, random.choice(user_channels), file_path)
+            else:
+                message = random.choice(content_list)
+                executor.submit(send_message, token, random.choice(user_channels), message)
 
 def main():
+    global repeat_count
     # Add your user token and channels directly in the code
     token = "YOUR_USER_TOKEN"
     user_channels = [
-        "https://discord.com/api/v9/channels/YOUR_CHANNEL_ID_1/messages",
-        "https://discord.com/api/v9/channels/YOUR_CHANNEL_ID_2/messages"
+        "https://discord.com/api/v9/channels/CHANNEL_ID/messages"
         # Add more channel URLs as needed
     ]
 
-    repeat_count = 30
-    image_folder_path = r"resources/images"  # Replace with your folder path
+    repeat_count = int(input("Enter the number of messages/images to send: "))
 
-    print("Add your own messages. Press Enter twice to finish adding.")
-    user_messages = get_user_messages()
+    print("Choose an option:")
+    print("1. Only use text messages")
+    print("2. Only use images")
+    choice = input("Enter your choice (1 or 2): ")
 
-    while True:
-        for i in range(repeat_count):
-            if random.choice([True, False]):  # Randomly choose whether to send a message or an image
-                message = random.choice(user_messages)
-                send_messages_in_parallel(token, user_channels, message)
-            else:
-                images = get_files_in_folder(image_folder_path)
-                if images:
-                    image_path = os.path.join(image_folder_path, random.choice(images))
-                    send_files_in_parallel(token, user_channels, image_path)
+    if choice == '1':
+        user_messages = get_user_input("Enter your message (or press Enter twice to finish adding your message): ", "")
 
-            # time.sleep(1) <-- uncomment to change the time between sending each message, ex: time.sleep(5)
+        while True:
+            send_messages_in_parallel(token, user_channels, user_messages)
+            print(f"{repeat_count} messages sent to {len(user_channels)} channels. Wait 5 seconds before resending.")
+            time.sleep(5)
 
-        print(f"{repeat_count} messages/images sent to {len(user_channels)} channels. Wait 5 seconds before resending.")
-        time.sleep(5)
+            user_input = input(f"Do you want to send another {repeat_count} messages? (y/n): ")
+            if user_input.lower() != 'y':
+                break
 
-        user_input = input("Do you want to send another 30 messages/images? (y/n): ")
-        if user_input.lower() != 'y':
-            break
+    elif choice == '2':
+        image_folder_path = r"resources\images"  # Replace with your folder path
+
+        if os.path.exists(image_folder_path):
+            while True:
+                send_messages_in_parallel(token, user_channels, [], is_file=True, folder_path=image_folder_path)
+                print(f"{repeat_count} images sent to {len(user_channels)} channels. Wait 5 seconds before resending.")
+                time.sleep(5)
+
+                user_input = input(f"Do you want to send another {repeat_count} images? (y/n): ")
+                if user_input.lower() != 'y':
+                    break
+        else:
+            print("Invalid folder path. Please provide a valid path.")
+
+    else:
+        print("Invalid choice. Please enter either '1' or '2'.")
 
 if __name__ == "__main__":
     main()
