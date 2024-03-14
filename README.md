@@ -2,7 +2,9 @@
 # Discord python selfbot
 
 A simple discord selfbot written in python.<br><br>
-[![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE) 
+[![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE) <Br>
+[Releases](https://github.com/owaii/python-selfbot/releases)
+
 
 
 ## Table of Contents
@@ -23,8 +25,9 @@ This selfbot was made in python using a requests library that you have to instal
 
 - Customizable message delay
 - Choosing the words that will be spammed
-- Randomizing words and images to send from the list
+- Randomizing messages/images to send from the list
 - Sending messages/images to multiple channels/dms at once
+- Fast request time
 - Easy to use
 - more features are going to be added in the future
 
@@ -53,16 +56,15 @@ If you succesfuly completed these steps, its time to look into the code. Open th
 token = "YOUR_USER_TOKEN"
 
 user_channels = [
-"https://discord.com/api/v9/channels/YOUR_CHANNEL_ID_1/messages",
-"https://discord.com/api/v9/channels/YOUR_CHANNEL_ID_2/messages"
-# Add more channel URLs as needed
+"https://discord.com/api/v9/channels/YOUR_CHANNEL_ID/messages"
+# Add more channel URLs as needed, using a comma
 
 [...]
 
 image_folder_path = r"resources/images"  # Replace with your folder path
 
 ```
-- To get your request url, you need to go to the channel that you are trying to flood and open developer tools. Send a random message and look as there is a new request called "messages". Click on it and search for "Request URL". Copy the link and paste it inside the quotes.
+- To get your request url, you need to go to the channel that you are trying to flood and open developer tools network tab. Send a random message and look as there is a new request called "messages". Click on it and search for "Request URL". Copy the link and paste it inside the quotes.
 
 - To get your token, you simply need to do the same as before but search for "Authorization". There will be your token.  Copy it and paste it inside the quotes
 
@@ -78,12 +80,12 @@ Run the program and enjoy :)
 
 <h3>In the near future:</h3>
 <ul>
-  <li>Auto token grabbing, so the user doesn't have to check for it for themselves</li>
   <li>List of servers and channels generated for the user's account, so they can move easily between channels to spam</li>
 </ul>
 
 <h3>Late future plans:</h3>
 <ul>
+  <li>Auto token grabbing, so the user doesn't have to check for it for themselves</li>
   <li>Bot mod bypassing</li>
   <li>Overall better performance and optimalization</li>
 </ul>
