@@ -14,5 +14,12 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-echo Python is installed, and the 'requests' library is available.
+python -c "import tqdm" >nul 2>&1
+if %errorlevel% neq 0 (
+    echo The 'tqdm' library is not installed. Install it by running: pip install tqdm
+    pause
+    exit /b 1
+)
+
+echo Python is installed, and all required libraries are available.
 pause
