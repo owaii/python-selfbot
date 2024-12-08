@@ -38,7 +38,7 @@ Instructions on setting up your project locally. Include prerequisites, installa
 <h3>Step 1.</h3>
 
 You will need to have the newest [python](https://www.python.org/downloads/) installed.
-I will include a [file](https://github.com/owaii/python-selfbot/blob/selfbot/src/resources/dependenciesCheck.bat) to check for python and request library availability on your system.
+I will include a [file]([https://github.com/owaii/python-selfbot/blob/main/src/resources/dependenciesCheck.bat) to check for python and request library availability on your system.
 
 <h3>Step 2.</h3>
 
