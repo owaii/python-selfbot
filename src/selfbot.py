@@ -53,7 +53,7 @@ def send_message(token, channel_url, message):
 def get_files_in_folder(folder_path):
     return [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
 
-def random_delay(min_delay=0.1, max_delay=2): # Changeable but NOT recommended!
+def random_delay(min_delay=0.1, max_delay=1): # Changeable but NOT recommended!
     delay = random.uniform(min_delay, max_delay)
     logging.info(f"Waiting for {delay:.2f} seconds before sending next message.")
     time.sleep(delay)
